@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Homework - JDBC</title>
+	<style type="text/css">
+		@import url("../stylesheets/jhu.css");
+		@import url("../stylesheets/course.css");
+	</style>
+</head>
+<body>
+	<p align="center" class="MainHeading"><img src="../Images/banner.gif" alt="banner" width="1280" height="98" /></p>
+
+	<p align="center" class="MainHeading">Homework for JDBC</p>
+	<p align="left" class="Heading">Assignment:</p>
+	<p align="left" class="Normal">Beartooth Hiking Company is placing all of their booking data on a MySQL database on the <a href="../CourseResources.html">course computer</a>. They have configured the database to contain three tables. The first, reservation, looks like this:</p>
+	<p align="left" class="Normal"><img src="../Images/booking-table-1.jpg" alt="booking table description" width="500" /></p>
+	<p align="left" class="Normal">The second, guides, looks like this</p>
+	<p align="left" class="Normal"><img src="../Images/booking-table-2.jpg" alt="Description of guide table" width="500" /></p>
+	<p align="left" class="Normal">And the last, locations, looks like this:</p>
+	<p align="left" class="Normal"><img src="../Images/booking-table-3.jpg" alt="Description of locations table" width="500" /></p>
+	<p align="left" class="Normal">BHC would like it's employees to be able to view this database from a web page. They would like you to create a web page that lets the user view all entries in the database that are equal to or after a given start date.</p>
+	<p align="left" class="Normal">So, you will need to create a form that will accept a year, month and day, and then query the database. The data returned should be formatted into an html table and shown to the user. It should contain the dates, the location of the tour, the guides name, and the first and last name on the reservation. Note this is based on a start day only, there is no end day. Do not assume that input/output is Java based, use simple text streams (No Java Objects).</p>
+	<p align="left" class="Normal">Oh, and of course you'll need to connect to the database. You can manually connect to the database if you are logged in to the class computer with the parameters as in the command:</p>
+	<p align="left" class="Courier">/usr/bin/mysql -u johncolter -pLetMeIn class</p>
+	<p align="left" class="Normal">The gives you read-only access to the database.</p>
+	<p align="left" class="Normal">To actually develop your application, you'll need to make a new database connection.</p>
+	<ol>
+	  <li>Go to the top left window of Netbeans and click on Services</li>
+	  <li>
+	  	Right click on Databases and select &quot;New Connection&quot;.Note that you may need to select the driver you want to use.  Look for the MySQL driver.<br />
+		<img src="../Images/Homeworkdriver.jpg" alt="choosing a driver" width="500" />
+	  </li>
+	  <li>
+	  	Fill in the next panel as shown below and select the Test Connection button to make sure connection succeeds.  If so you will see the following display.<br /><br />
+	  	<img src="../Images/mysql-connect.jpg" alt="MySQL connection" width="500" />
+	  </li>
+	</ol>
+	<p align="left" class="Normal">This will now give you a connection to the MySQL database. You can make a connection with the URL</p>
+	<p align="left" class="Normal"><span class="Courier">String dbURL = &quot;jdbc:&lt;database-name&gt;://&quot; + host + &quot;:&quot; + port + &quot;/&quot; + dbName;</span></p>
+	<p align="left" class="Normal">Where the database name is mysql, the host is web6.jhuep.com (or whatever the course computer is) and the port is 3306 and the dbName is &quot;class&quot;.</p>
+	<p align="left" class="Normal">Once you connect, you can view the database using Netbeans:</p>
+	<p align="left" class="Normal"><img src="../Images/jdbc-homework.jpg" alt="MySQL connection in Netbeans" width="900" /></p>
+	<p align="left" class="Normal">You may use Servlets, JSPs or a combination of both for this project. </p>
+	<p align="left" class="Heading">Hint:</p>
+	<p align="left" class="Normal">Here is an example of joining the three tables to show some information:</p>
+	<p align="left" class="Normal"><img src="../Images/HW-sample-query.jpg" alt="Sample HW 11 query" width="500" /></p>
+
+	<p align="left" class="Heading">Submission:</p>
+	<p align="left" class="Normal">Once you have completed your application, &quot;build&quot; it and upload the WAR file to the app server on the <a href="../CourseResources.html">course computer</a>.</p>
+	<p align="left" class="Normal">Upload a zip to Blackboard Assignments of:</p>
+	<ol>
+	  <li>a text file with the URL to your running application on the class computer</li>
+	  <li>your java source code</li>
+	</ol>
+	<p class="Heading">Grading:</p>
+	<p><a href="../Resources/GradingCriteria.html">General Grading Guidelines</a></p>
+</body>
+</html>
+
