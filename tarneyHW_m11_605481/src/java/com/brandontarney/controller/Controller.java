@@ -6,8 +6,12 @@
  */
 package com.brandontarney.controller;
 
+import com.brandontarney.log.MyLogger;
+import com.brandontarney.model.DatabaseManager;
+import com.brandontarney.model.Reservations;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,9 +20,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.logging.Logger;
 
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class Controller extends HttpServlet {
+
+    private final static Logger LOGGER
+            = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    
+    private final static String LOG_PATH = "/Users/Tarney/tmp/tarneyHW_m11_605481.log";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,9 +41,44 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         ServletContext servletContext = getServletContext();
+
+        Reservations reservations = (Reservations) session.getAttribute("reservations");
+        if (reservations == null) {
+            try {
+                MyLogger.setup(LOG_PATH);
+                reservations = new Reservations();
+                session.setAttribute("reservations", reservations);
+                RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/query.jsp");
+                dispatcher.forward(request, response);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Problems with creating the log files");
+            }
+        }
+
+        LOGGER.info("processRequest start");
+
+        BufferedWriter bw = null;
+        bw = new BufferedWriter(new FileWriter("/Users/Tarney/tmp/test_log"));
+
+        try {
+            DatabaseManager dbMgr = new DatabaseManager("web6.jhuep.com", "class", 3306);
+
+            reservations = dbMgr.getReservations();
+            session.setAttribute("reservations", reservations);
+            bw.write("size of reservations: " + reservations.getReservations().size());
+            bw.close();
+            System.out.println("Size of reservations: " + reservations.getReservations().size());
+        } catch (Exception e) {
+            bw.write("exception = " + e.getMessage());
+            bw.close();
+            System.err.println("" + e.getMessage());
+        }
 
         //TODO:
         //  1. Decipher Date from request parameters
@@ -43,7 +88,6 @@ public class Controller extends HttpServlet {
         //  5. Serve up a JSP (which itself will render the HTML table based on the model 
         RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/result.jsp");
         dispatcher.forward(request, response);
-        
 
     }
 

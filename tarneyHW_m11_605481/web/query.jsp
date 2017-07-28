@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Beartooth Hiking Company (BHC)</title>
-        <jsp:useBean id="hike_info" class="com.brandontarney.model.QueryResult" scope="session" />
+        <jsp:useBean id="reservations" class="com.brandontarney.model.Reservations" scope="session" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/BeartoothHikingCompany.css" type="text/css" />
         <script type="text/javascript" src="javascript/BeartoothHikingCompany.js"></script>
