@@ -45,7 +45,37 @@
                 </form>
             </section>
             <section id="form" class="table">
-                <h2 id="form_header">Hikes after (DATE)</h2>
+                <h2 id="form_header">Hikes after <%= reservations.getComparisonDate()%></h2>
+                <table id="tours_table">
+                    <thead>
+                        <tr>
+                            <th id="table_title" colspan="7">Reservations</th>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Duration</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Guide First Name</th>
+                            <th>Guide Last Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%@ page import="com.brandontarney.model.Reservation" %>
+                        <% for (Reservation reservation : reservations.getReservations()) {%>
+                        <tr>
+                            <td><%= reservation.getStartDate()%></td>
+                            <td><%= reservation.getLocation()%></td>
+                            <td><%= reservation.getDuration()%></td>
+                            <td><%= reservation.getCustomerFirstName()%></td>
+                            <td><%= reservation.getCustomerLastName()%></td>
+                            <td><%= reservation.getGuideFirstName()%></td>
+                            <td><%= reservation.getGuideLastName()%></td>
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
             </section>
             <section id="more_info">
                 <h2 id="more_info_header" class="more_info">More Information</h2>

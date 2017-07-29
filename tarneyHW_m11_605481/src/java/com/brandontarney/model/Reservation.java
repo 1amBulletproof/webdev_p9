@@ -6,18 +6,27 @@
  */
 package com.brandontarney.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Reservation {
     private Date startDate;
-    private Date endDate;
+    private int duration;
     private String location;
     private String guideFirstName;
     private String guideLastName;
     private String customerFirstName;
     private String customerLastName;
     
-    public Reservation() {}
+    public Reservation() {
+        this.startDate = new Date(1);
+        this.duration = -1;
+        this.location = "unset";
+        this.guideFirstName = "unset";
+        this.guideLastName = "unset";
+        this.customerFirstName = "unset";
+        this.customerLastName = "unset";
+    }
+
     
     /**
      * @return the startDate
@@ -36,15 +45,15 @@ public class Reservation {
     /**
      * @return the endDate
      */
-    public Date getEndDate() {
-        return endDate;
+    public int getDuration() {
+        return this.duration;
     }
 
     /**
      * @param endDate the endDate to set
      */
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDuration(int newDuration) {
+        this.duration = newDuration;
     }
 
     /**

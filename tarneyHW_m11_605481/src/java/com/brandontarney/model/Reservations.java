@@ -6,10 +6,24 @@
  */
 package com.brandontarney.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
-
 public class Reservations {
+
+    /**
+     * @return the comparisonDate
+     */
+    public String getComparisonDate() {
+        return comparisonDate;
+    }
+
+    /**
+     * @param comparisonDate the comparisonDate to set
+     */
+    public void setComparisonDate(String comparisonDate) {
+        this.comparisonDate = comparisonDate;
+    }
 
     /**
      * @return the reservations
@@ -24,9 +38,13 @@ public class Reservations {
     public void setReservations(ArrayList<Reservation> reservations) {
         this.reservations = reservations;
     }
-    
+
     private ArrayList<Reservation> reservations;
-    
-    public Reservations(){};
-    
+    private String comparisonDate;
+
+    public Reservations() {
+        this.comparisonDate = "N/A";
+    }
+;
+
 }
