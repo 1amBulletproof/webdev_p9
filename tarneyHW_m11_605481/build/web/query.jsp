@@ -37,8 +37,8 @@
             </header>
             <section id="form" class="table">
                 <h2 id="form_header">Search for Hikes</h2>
-                <form action="http://localhost:8084/tarneyHW_m11_605481/Controller" method=GET onSubmit=" return validatePartySize(1, 10)">
-                <!--  <form action="http://web6.jhuep.com:80/tarneyHW_m11_605481/Controller" method=GET onSubmit=" return validatePartySize(1, 10)">  -->
+                <!--<form action="http://localhost:8084/tarneyHW_m11_605481/Controller" method=GET onSubmit=" return validatePartySize(1, 10)"> -->
+                  <form action="http://web6.jhuep.com:80/tarneyHW_m11_605481/Controller" method=GET onSubmit=" return validatePartySize(1, 10)"> 
                     <p class="excited_msg">Pick a Date</p>
                     <input type="text" class="big_text" id="datepicker" name="datepicker" size="10" value="06/01/2017">
                     <input class="biggest_text" type="SUBMIT" name="submit" value="submit" />

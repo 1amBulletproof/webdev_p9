@@ -30,17 +30,19 @@ public class Controller extends HttpServlet {
             = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private final static String LOCAL_LOG_PATH = "/Users/Tarney/logs/tarneyHW_m11_605481.log";
-    private final static String SERVER_LOG_PATH = "/home/btarney1/logs/tarneyHW_m11_605481.log";
+    //private final static String SERVER_LOG_PATH = "/home/btarney1/logs/tarneyHW_m11_605481.log";
+    private final static String SERVER_LOG_PATH = "tarneyHW_m11_605481.log";
 
     /**
      * Constructor - Initialize logger for whole application
      */
     public Controller() {
         try {
-            MyLogger.setup(LOCAL_LOG_PATH);
+            //MyLogger.setup(LOCAL_LOG_PATH);
+            MyLogger.setup(SERVER_LOG_PATH);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("Problems with creating the log files");
+            throw new RuntimeException("Problems with creating the log files" + e.getMessage());
         }
     }
 
